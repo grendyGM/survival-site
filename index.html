@@ -9,12 +9,11 @@
 :root {
   --bg: #1f1f1f;
   --panel: #2b2b2b;
-  --panel-alt: #333;
-  --text: #f2f2f2;
   --border: #444;
+  --text: #f2f2f2;
 }
 
-* { box-sizing: border-box; }
+/* Layout */
 
 body {
   margin: 0;
@@ -40,38 +39,72 @@ hr {
   margin: 2rem 0;
 }
 
+/* Tables */
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 1rem 0;
-  background: var(--panel);
 }
 
 th, td {
-  border: 1px solid var(--border);
-  padding: 0.75rem;
-  text-align: left;
+  border: 1px solid #000;
+  padding: 0.6rem;
   vertical-align: top;
 }
 
 thead th {
-  background: var(--panel-alt);
+  font-weight: bold;
 }
+
+/* Original color restoration */
+
+.day-header {
+  background: #000000;
+  color: white;
+}
+
+.night-header {
+  background: #000000;
+  color: white;
+}
+
+.dawnrise { background: #3d85c6; }
+.morning { background: #6d9eeb; }
+.midday { background: #9ec0fb; }
+
+.gloaming { background: #d5a6bd; }
+.nightfall { background: #c27ba0; }
+.midnight { background: #674ea7; }
+
+/* Travel table header */
+
+.travel-header {
+  background: #20124d;
+  color: white;
+}
+
+/* Nested list indentation */
 
 ul {
   padding-left: 1.5rem;
 }
 
-strong {
-  font-weight: bold;
+ul ul {
+  padding-left: 1.5rem;
+  list-style-type: circle;
 }
+
+ul ul ul {
+  padding-left: 1.5rem;
+  list-style-type: square;
+}
+
+/* Responsive */
 
 @media (max-width: 700px) {
   table, thead, tbody, th, td, tr {
     display: block;
-  }
-  th {
-    background: var(--panel-alt);
   }
 }
 </style>
@@ -88,50 +121,71 @@ strong {
 <table>
 <thead>
 <tr>
-<th>Day</th>
-<th>Night</th>
+<th class="day-header">Day</th>
+<th class="night-header">Night</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Dawnrise (4 AM - 8 AM)</td>
-<td>Gloaming (4 PM - 8 PM)</td>
+<td class="dawnrise">Dawnrise (4 AM - 8 AM)</td>
+<td class="gloaming">Gloaming (4 PM - 8 PM)</td>
 </tr>
 <tr>
-<td>Morning (8 AM - 12 PM)</td>
-<td>Nightfall (8 PM - 12 AM)</td>
+<td class="morning">Morning (8 AM - 12 PM)</td>
+<td class="nightfall">Nightfall (8 PM - 12 AM)</td>
 </tr>
 <tr>
-<td>Mid-Day (12 PM - 4 PM)</td>
-<td>Midnight (12 AM - 4 AM)</td>
+<td class="midday">Mid-Day (12 PM - 4 PM)</td>
+<td class="midnight">Midnight (12 AM - 4 AM)</td>
 </tr>
 </tbody>
 </table>
 
 <h3>Resource Management</h3>
 <ul>
-<li>Your supply of food, water, arrows, and torches are each tracked using a <strong>Resource Die</strong> (D6 to D12). Every time you use one of these items, roll. On a 1 or 2, decrease the Resource Die one step (D10 to D8, etc). When you roll a D6 and get a 1 or 2, that item’s supply is depleted.</li>
-<li>Resources can be replenished by foraging or crafting, as described under Rest Activities.</li>
-<li>Each day, every PC must roll <strong>Resource Dice</strong> for both food and water. Without food and water, a character gains Hunger or Thirst Exhaustion (see below). Some features allow characters to ignore food and water requirements (for example, Deathless Nature or Constructed Resilience).</li>
+<li>Your supply of food, water, arrows, and torches are each tracked using a <strong>Resource Die</strong> (D6 to D12).
+</li>
+<li>Every time you use one of these items, roll. On a 1 or 2, decrease the Resource Die one step. When you roll a D6 and get a 1 or 2, that item’s supply is depleted.</li>
+<li>Resources can be replenished by foraging or crafting.</li>
+<li>Each day, every PC must roll <strong>Resource Dice</strong> for both food and water.
+  <ul>
+    <li>Without food and water, a character gains Hunger or Thirst Exhaustion.</li>
+    <li>Some features allow characters to ignore food and water requirements.</li>
+  </ul>
+</li>
 </ul>
 
 <h3>Exhaustion</h3>
 <ul>
-<li><strong>Exhaustion Track:</strong> Ranges from 0 to 10, applying -1 to all d20 tests per level.</li>
-<li>If a character fails an exhaustion check while they have 10 levels of exhaustion, the character dies.</li>
-<li><strong>Travel Exhaustion:</strong> Constitution saving throws.</li>
-<li>Normal or Slow pace: No check required.</li>
-<li>Fast pace: DC 13 (+ 3 per previous fast travel period), failure causes 1 level of exhaustion.</li>
-<li>Traveling Overtime: DC 10 + 3 per extra period, failure causes 2 levels of exhaustion.</li>
-<li><strong>Hunger & Thirst:</strong> Without food, a character becomes Hungry. Without water, they become Thirsty. No save. Levels of exhaustion do not recover normally.</li>
-<li>Hunger: 1 level each day without 1 pound (½ kilogram) of non-magical food.</li>
-<li>Thirst: 3 levels each day without one quart (1 litre) of non-magical water.</li>
-<li>Magical Food and Water can prevent further exhaustion, but does not allow recovery from Hunger Exhaustion or Thirst Exhaustion.</li>
-<li>Lesser Restoration recovers one level of Exhaustion from Thirst or Hunger.</li>
-<li><strong>Recovery:</strong> Short and long rests do not normally recover exhaustion.</li>
-<li>A Period (4 hours) spent resting or sleeping restores 1 level of exhaustion. Thus, sleeping for 2 periods restores 2 levels.</li>
-<li>An Established Camp recovers 1 bonus level of exhaustion per Long Rest.</li>
-<li>Comfortable lodging (as from an Inn) recovers 2 bonus levels of exhaustion per long rest.</li>
+<li><strong>Exhaustion Track:</strong> 0–10, applying -1 to all d20 tests per level.
+  <ul>
+    <li>If a character fails an exhaustion check at 10 levels, the character dies.</li>
+  </ul>
+</li>
+
+<li><strong>Travel Exhaustion:</strong> Constitution saving throws.
+  <ul>
+    <li>Normal or Slow pace: No check required.</li>
+    <li>Fast pace: DC 13 (+3 per previous fast period), failure causes 1 level.</li>
+    <li>Traveling Overtime: DC 10 + 3 per extra period, failure causes 2 levels.</li>
+  </ul>
+</li>
+
+<li><strong>Hunger & Thirst:</strong>
+  <ul>
+    <li>Hunger: 1 level each day without 1 pound of food.</li>
+    <li>Thirst: 3 levels each day without one quart of water.</li>
+    <li>No save. Levels do not recover normally.</li>
+  </ul>
+</li>
+
+<li><strong>Recovery:</strong>
+  <ul>
+    <li>1 period of rest restores 1 level.</li>
+    <li>Established Camp: +1 bonus level per Long Rest.</li>
+    <li>Comfortable lodging: +2 bonus levels per long rest.</li>
+  </ul>
+</li>
 </ul>
 
 <hr>
@@ -142,7 +196,7 @@ strong {
 
 <table>
 <thead>
-<tr>
+<tr class="travel-header">
 <th>Terrain</th>
 <th>Slow Pace</th>
 <th>Normal Pace</th>
@@ -172,65 +226,27 @@ strong {
 </table>
 
 <h3>Encounter Checks</h3>
-<p>Travel is measured by entering hexes. Each time the party enters a hex, roll a d20:</p>
 <ul>
-<li>Roads: Encounter on a 1-4.</li>
-<li>Wilderness: Encounter on a 1-5. The DM rolls and determines the encounter.</li>
+<li>Roads: Encounter on 1–4.</li>
+<li>Wilderness: Encounter on 1–5.</li>
 </ul>
 
-<hr>
-
-<h3>Travel and Rest Limits</h3>
+<h3>Travel Roles</h3>
 <ul>
-<li>Maximum travel: 2 periods per day without exhaustion.</li>
-<li>Required sleep: 2 periods per day (typically consecutive).</li>
-<li>Remaining periods: Open for foraging, crafting, or other downtime activities.</li>
+<li><strong>Pathfinding:</strong>
+  <ul>
+    <li>Survival DC 13 in unexplored hexes.</li>
+    <li>Disadvantage in inclement weather.</li>
+  </ul>
+</li>
+<li><strong>Scout:</strong>
+  <ul>
+    <li>Perception or Stealth.</li>
+    <li>+10 over DC: Party gains Surprise.</li>
+    <li>Failure: Party is Surprised.</li>
+  </ul>
+</li>
 </ul>
-
-<h3>Conditional Travel Rules</h3>
-<ul>
-<li>Night Travel: Navigate and Scout checks are made at disadvantage unless 4 light resources are consumed.</li>
-<li>Harsh Conditions (extreme weather, heat, cold): Disadvantage on Constitution saving throws against Travel Exhaustion.</li>
-</ul>
-
-<h3>Travel Activities</h3>
-<ul>
-<li><strong>Pathfinding:</strong> Lead the Way. One Character rolls Survival (DC 13) in unexplored hexes (non-roads/rivers). Helping is allowed.</li>
-<li>Disadvantage in inclement weather, advantage with a detailed map or Navigator’s tools.</li>
-<li><strong>Scout:</strong> Keep Watch. One character rolls Perception or Stealth (Dex or Wis). Scouting DC is encounter-dependent. Disadvantage in inclement weather. Helping is allowed.</li>
-<li>Success exceeds DC by 10+: Party gains Surprise in encounter.</li>
-<li>Failure: Party is Surprised by encounter.</li>
-</ul>
-
-<h3>Rest Activities</h3>
-<ul>
-<li><strong>Establish Shelter:</strong> Survival (DC 13) to establish a camp: While in an Established Shelter, suffer no penalties from Harsh Conditions, recover 3 levels of exhaustion per Long Rest.</li>
-<li><strong>Gathering Raw Food:</strong> Raw Food can be used in place of a food resource die, but will rot in 2 days if not consumed or preserved.</li>
-<li>Failure by 5 or more causes mishap.</li>
-<li><strong>Hunt:</strong> Survival DC 13 (Varies +/- by environment). Success: you find a random beast and must succeed on an attack roll vs its AC.</li>
-<li>Success yields 1-5 Raw Food and possibly pelts.</li>
-<li><strong>Forage:</strong> Survival or applicable tool proficiency.</li>
-<li>DC 13 (+/- by environment): One Raw Food; One extra for every additional 10 points scored.</li>
-<li>The DM may waive foraging checks in abundant areas.</li>
-<li><strong>Special Foraging:</strong> (By DM discretion/depending on area)</li>
-<li>Forests/Hills/Plains: Herbs (healing potions), leather</li>
-<li>Mountains/Rivers/Swamps: Precious minerals, alchemical supplies</li>
-<li><strong>Preserving Raw Food:</strong> Roll Survival DC 10 to preserve one Raw Food into a Food Resource Die. Chefs tools provide advantage. Preserve one extra unit for every five points scored. Failure by 5 or more means one Raw Food is spoiled.</li>
-<li><strong>Craft:</strong> No test required, must have appropriate tools.</li>
-<li>Weaver’s or Leatherworker’s Tools: Repair damaged clothes and bags.</li>
-<li>Smith’s Tools: Repair damaged weapons or armor.</li>
-<li>Woodcarver’s or Carpenter’s Tools: Craft arrows or torches (+1 resource die or +2 with proficiency).</li>
-<li><strong>Sleep:</strong> Each character requires two periods of sleep or total rest (some features modify this requirement to one period, for example Trance or Deathless Nature).</li>
-</ul>
-
-<h3>Damaged Equipment</h3>
-<ul>
-<li>Damaged clothing does not protect from harsh conditions.</li>
-<li>A weapon that is damaged has -1 on attack and damage rolls.</li>
-<li>Armor that is damaged has -1 on AC.</li>
-</ul>
-
-<p>Damaged equipment can be repaired by spending a rest activity with no skill check required. Damaged equipment that takes further damage becomes broken and cannot be used again until it is repaired with a DC 13 Strength (Smith’s Tools) skill check. Help is allowed.</p>
 
 </div>
 </body>
