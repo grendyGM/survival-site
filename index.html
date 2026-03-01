@@ -13,42 +13,55 @@ body {
   line-height:1.6;
   margin:0;
 }
-.container{
+
+.container {
   max-width:1100px;
   margin:auto;
   padding:2rem 1.5rem;
 }
-h1,h2,h3{margin-top:1.5rem}
-hr{margin:2rem 0;border:0;border-top:1px solid #444}
 
-/* Table Styling */
-table{
+h1, h2, h3 { margin-top:1.5rem; }
+hr { margin:2rem 0; border:0; border-top:1px solid #444; }
+
+/* Tables */
+table {
   width:100%;
   border-collapse:collapse;
   margin:1rem 0;
 }
-td,th{
+
+th, td {
   border:1px solid #000;
   padding:8px;
+  vertical-align:top;
 }
 
 /* Timekeeping Table Colors */
-.day-header{background:#000;color:white;text-align:center}
-.night-header{background:#000;color:white;text-align:center}
-.dawnrise{background:#3d85c6;color:white}
-.morning{background:#6d9eeb;color:white}
-.midday{background:#9ec0fb;color:white}
-.gloaming{background:#d5a6bd;color:white}
-.nightfall{background:#c27ba0;color:white}
-.midnight{background:#674ea7;color:white}
+.day-header { background:#000; color:white; text-align:center; }
+.night-header { background:#000; color:white; text-align:center; }
+
+.dawnrise { background:#3d85c6; color:white; }
+.morning { background:#6d9eeb; color:white; }
+.midday { background:#9ec0fb; color:white; }
+
+.gloaming { background:#d5a6bd; color:white; }
+.nightfall { background:#c27ba0; color:white; }
+.midnight { background:#674ea7; color:white; }
 
 /* Travel Table Header */
-.travel-header{background:#20124d;color:white}
+.travel-header { background:#20124d; color:white; }
 
 /* Nested Lists */
-ul{padding-left:1.5rem}
-ul ul{padding-left:1.5rem;list-style-type:circle}
-ul ul ul{padding-left:1.5rem;list-style-type:square}
+ul { padding-left:1.5rem; }
+ul ul { padding-left:1.5rem; list-style-type:circle; }
+ul ul ul { padding-left:1.5rem; list-style-type:square; }
+
+/* Responsive */
+@media (max-width:700px) {
+  table, thead, tbody, th, td, tr {
+    display:block;
+  }
+}
 </style>
 </head>
 
@@ -85,7 +98,7 @@ ul ul ul{padding-left:1.5rem;list-style-type:square}
 <ul>
 <li>Your supply of food, water, arrows, and torches are each tracked using a <strong>Resource Die</strong> (D6 to D12). Every time you use one of these items, roll. On a 1 or 2, decrease the Resource Die one step (D10 to D8, etc). When you roll a D6 and get a 1 or 2, that item’s supply is depleted.</li>
 
-<li>Resources can be replenished by foraging or crafting, as described under Rest Activities</li>
+<li>Resources can be replenished by foraging or crafting, as described under Rest Activities.</li>
 
 <li>Each day, every PC must roll <strong>Resource Dice</strong> for both food and water. Without food and water, a character gains Hunger or Thirst Exhaustion (see below). Some features allow characters to ignore food and water requirements (for example, Deathless Nature or Constructed Resilience).</li>
 </ul>
@@ -102,7 +115,7 @@ ul ul ul{padding-left:1.5rem;list-style-type:square}
 <li><strong>Travel Exhaustion:</strong> Constitution saving throws.
   <ul>
     <li><strong>Normal or Slow pace:</strong> No check required.</li>
-    <li><strong>Fast pace:</strong> DC <strong>13 (+ 3 per previous fast travel period)</strong>, failure causes <strong>1 level of exhaustion</strong>.</li>
+    <li><strong>Fast pace:</strong> DC <strong>13 (+3 per previous fast travel period)</strong>, failure causes <strong>1 level of exhaustion</strong>.</li>
     <li><strong>Traveling Overtime:</strong> DC <strong>10 + 3 per extra period</strong>, failure causes <strong>2 levels of exhaustion</strong>.</li>
   </ul>
 </li>
@@ -164,7 +177,7 @@ ul ul ul{padding-left:1.5rem;list-style-type:square}
 
 <ul>
 <li><strong>Roads:</strong> Encounter on a <strong>1-4</strong></li>
-<li><strong>Wilderness:</strong> Encounter on a <strong>1-5</strong> The DM rolls and determines the encounter.</li>
+<li><strong>Wilderness:</strong> Encounter on a <strong>1-5</strong>. The DM rolls and determines the encounter.</li>
 </ul>
 
 <hr>
