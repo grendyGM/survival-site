@@ -23,11 +23,18 @@ body {
 h1, h2, h3 { margin-top:1.5rem; }
 hr { margin:2rem 0; border:0; border-top:1px solid #444; }
 
-/* Tables */
-table {
+/* ---------- TABLES ---------- */
+
+.table-wrap {
   width:100%;
-  border-collapse:collapse;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
   margin:1rem 0;
+}
+
+.table-wrap table {
+  min-width:520px;
+  border-collapse:collapse;
 }
 
 th, td {
@@ -36,7 +43,8 @@ th, td {
   vertical-align:top;
 }
 
-/* Timekeeping Table Colors */
+/* Timekeeping colors */
+
 .day-header { background:#000; color:white; text-align:center; }
 .night-header { background:#000; color:white; text-align:center; }
 
@@ -48,20 +56,13 @@ th, td {
 .nightfall { background:#c27ba0; color:white; }
 .midnight { background:#674ea7; color:white; }
 
-/* Travel Table Header */
+/* Travel header */
 .travel-header { background:#20124d; color:white; }
 
-/* Nested Lists */
+/* Lists */
 ul { padding-left:1.5rem; }
-ul ul { padding-left:1.5rem; list-style-type:circle; }
-ul ul ul { padding-left:1.5rem; list-style-type:square; }
-
-/* Responsive */
-@media (max-width:700px) {
-  table, thead, tbody, th, td, tr {
-    display:block;
-  }
-}
+ul ul { list-style-type:circle; }
+ul ul ul { list-style-type:square; }
 </style>
 </head>
 
@@ -72,8 +73,9 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 
 <h2>Timekeeping</h2>
 
-<p>A day is divided into six 4-hour <strong>Periods</strong>:</p>
+<p>A day is divided into six 4-hour Periods:</p>
 
+<div class="table-wrap">
 <table>
 <tr>
 <th class="day-header">Day</th>
@@ -92,6 +94,7 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 <td class="midnight">Midnight (12 AM - 4 AM)</td>
 </tr>
 </table>
+</div>
 
 <h3>Resource Management</h3>
 
@@ -107,32 +110,31 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 
 <ul>
 <li>Exhaustion Track: Ranges from 0 to 10, applying -1 to all d20 tests per level.</li>
-
 <li>If a character fails an exhaustion check while they have 10 levels of exhaustion, the character dies.</li>
 
 <li>Travel Exhaustion: Constitution saving throws.
-  <ul>
-    <li>Normal or Slow pace: No check required.</li>
-    <li>Fast pace: DC 13 (+ 3 per previous fast travel period), failure causes 1 level of exhaustion.</li>
-    <li>Traveling Overtime: DC 10 + 3 per extra period, failure causes 2 levels of exhaustion.</li>
-  </ul>
+<ul>
+<li>Normal or Slow pace: No check required.</li>
+<li>Fast pace: DC 13 (+ 3 per previous fast travel period), failure causes 1 level of exhaustion.</li>
+<li>Traveling Overtime: DC 10 + 3 per extra period, failure causes 2 levels of exhaustion.</li>
+</ul>
 </li>
 
 <li>Hunger & Thirst: Without food, a character becomes Hungry. Without water, they become Thirsty. No save. Levels of exhaustion do not recover normally.
-  <ul>
-    <li>Hunger: 1 level each day without 1 pound (½ kilogram) of non-magical food.</li>
-    <li>Thirst: 3 levels each day without one quart (1 litre) of non-magical water.</li>
-    <li>Magical Food and Water can prevent further exhaustion, but does not allow recovery from Hunger Exhaustion or Thirst Exhaustion.</li>
-    <li>Lesser Restoration recovers one level of Exhaustion from Thirst or Hunger.</li>
-  </ul>
+<ul>
+<li>Hunger: 1 level each day without 1 pound (½ kilogram) of non-magical food.</li>
+<li>Thirst: 3 levels each day without one quart (1 litre) of non-magical water.</li>
+<li>Magical Food and Water can prevent further exhaustion, but does not allow recovery from Hunger Exhaustion or Thirst Exhaustion.</li>
+<li>Lesser Restoration recovers one level of Exhaustion from Thirst or Hunger.</li>
+</ul>
 </li>
 
 <li>Recovery: Short and long rests do not normally recover exhaustion.
-  <ul>
-    <li>A Period (4 hours) spent resting or sleeping restores 1 level of exhaustion. Thus, sleeping for 2 periods restores 2 levels.</li>
-    <li>An Established Camp recovers 1 bonus level of exhaustion per Long Rest.</li>
-    <li>Comfortable lodging (as from an Inn) recovers 2 bonus levels of exhaustion per long rest.</li>
-  </ul>
+<ul>
+<li>A Period (4 hours) spent resting or sleeping restores 1 level of exhaustion. Thus, sleeping for 2 periods restores 2 levels.</li>
+<li>An Established Camp recovers 1 bonus level of exhaustion per Long Rest.</li>
+<li>Comfortable lodging (as from an Inn) recovers 2 bonus levels of exhaustion per long rest.</li>
+</ul>
 </li>
 </ul>
 
@@ -142,6 +144,7 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 
 <h3>Terrain & Travel Pace per Period</h3>
 
+<div class="table-wrap">
 <table>
 <tr class="travel-header">
 <th>Terrain</th>
@@ -168,6 +171,7 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 <td>1 (6 miles)</td>
 </tr>
 </table>
+</div>
 
 <h3>Encounter Checks</h3>
 
@@ -201,16 +205,16 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 
 <ul>
 <li>Pathfinding: Lead the Way. One Character rolls Survival (DC 13) in unexplored hexes (non-roads/rivers). Helping is allowed. Failure by 5 or more triggers a mishap.
-  <ul>
-    <li>Disadvantage in inclement weather, advantage with a detailed map or Navigator’s tools.</li>
-  </ul>
+<ul>
+<li>Disadvantage in inclement weather, advantage with a detailed map or Navigator’s tools.</li>
+</ul>
 </li>
 
 <li>Scout: Keep Watch. One character rolls Perception or Stealth (Dex or Wis). Scouting DC is encounter-dependent. Disadvantage in inclement weather. Helping is allowed.
-  <ul>
-    <li>Success exceeds DC by 10+: Party gains Surprise in encounter.</li>
-    <li>Failure: Party is Surprised by encounter.</li>
-  </ul>
+<ul>
+<li>Success exceeds DC by 10+: Party gains Surprise in encounter.</li>
+<li>Failure: Party is Surprised by encounter.</li>
+</ul>
 </li>
 </ul>
 
@@ -222,32 +226,32 @@ ul ul ul { padding-left:1.5rem; list-style-type:square; }
 <li>Gathering Raw Food: Raw Food can be used in place of a food resource die, but will rot in 2 days if not consumed or preserved. Failure by 5 or more causes mishap.</li>
 
 <li>Hunt: Survival DC 13 (Varies +/- by environment). Success: you find a random beast and must succeed on an attack roll vs its AC.
-  <ul>
-    <li>Success yields 1-5 Raw Food and possibly pelts.</li>
-  </ul>
+<ul>
+<li>Success yields 1-5 Raw Food and possibly pelts.</li>
+</ul>
 </li>
 
 <li>Forage: Survival or applicable tool proficiency. Foraging can yield food or water resources:
-  <ul>
-    <li>DC 13 (+/- by environment): One Raw Food; One extra for every additional 10 points scored.</li>
-    <li>The DM may waive foraging checks in abundant areas.</li>
-    <li>Special Foraging: (By DM discretion/depending on area)
-      <ul>
-        <li>Forests/Hills/Plains: Herbs (healing potions), leather</li>
-        <li>Mountains/Rivers/Swamps: Precious minerals, alchemical supplies</li>
-      </ul>
-    </li>
-  </ul>
+<ul>
+<li>DC 13 (+/- by environment): One Raw Food; One extra for every additional 10 points scored.</li>
+<li>The DM may waive foraging checks in abundant areas.</li>
+<li>Special Foraging: (By DM discretion/depending on area)
+<ul>
+<li>Forests/Hills/Plains: Herbs (healing potions), leather</li>
+<li>Mountains/Rivers/Swamps: Precious minerals, alchemical supplies</li>
+</ul>
+</li>
+</ul>
 </li>
 
 <li>Preserving Raw Food: Roll Survival DC 10 to preserve one Raw Food into a Food Resource Die. Chefs tools provide advantage. Preserve one extra unit for every five points scored. Failure by 5 or more means one Raw Food is spoiled.</li>
 
 <li>Craft: No test required, must have appropriate tools.
-  <ul>
-    <li>Weaver’s or Leatherworker’s Tools: Repair damaged clothes and bags:</li>
-    <li>Smith’s Tools: Repair damaged weapons or armor.</li>
-    <li>Woodcarver’s or Carpenter’s Tools: Craft arrows or torches (+1 resource die or +2 with proficiency.).</li>
-  </ul>
+<ul>
+<li>Weaver’s or Leatherworker’s Tools: Repair damaged clothes and bags:</li>
+<li>Smith’s Tools: Repair damaged weapons or armor.</li>
+<li>Woodcarver’s or Carpenter’s Tools: Craft arrows or torches (+1 resource die or +2 with proficiency.).</li>
+</ul>
 </li>
 
 <li>Sleep: Each character requires two periods of sleep or total rest (some features modify this requirement to one period, for example Trance or Deathless Nature).</li>
